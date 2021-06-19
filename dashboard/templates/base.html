@@ -59,7 +59,7 @@
 
 
 <!-- SLEEK CSS -->
-<link rel="stylesheet" href="{% static 'assets/css/sleek.css' %}" />
+<link href="{% static 'css/sleek.css' %}" rel="stylesheet" />
 <!-- FAVICON -->
 <link href="{% static 'img/favicon.png' %}" rel="shortcut icon">
 
@@ -135,13 +135,7 @@
                     </g>
                   </svg>
                     -->
-                    <svg t="1624003546677" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg" p-id="933" width="35" height="35">
-                        <path d="M128 170.666667h725.333333a42.666667 42.666667 0 0 1 42.666667 42.666666v85.333334a42.666667 42.666667 0 0 1-42.666667 42.666666H128a42.666667 42.666667 0 0 1-42.666667-42.666666V213.333333a42.666667 42.666667 0 0 1 42.666667-42.666666z m298.666667 256h426.666666a42.666667 42.666667 0 0 1 42.666667 42.666666v341.333334a42.666667 42.666667 0 0 1-42.666667 42.666666H426.666667a42.666667 42.666667 0 0 1-42.666667-42.666666v-341.333334a42.666667 42.666667 0 0 1 42.666667-42.666666z"
-                              fill="#13227a" p-id="934"></path>
-                        <path d="M85.333333 426.666667m42.666667 0l128 0q42.666667 0 42.666667 42.666666l0 341.333334q0 42.666667-42.666667 42.666666l-128 0q-42.666667 0-42.666667-42.666666l0-341.333334q0-42.666667 42.666667-42.666666Z"
-                              fill="#13227a" opacity=".3" p-id="935"></path>
-                    </svg>
+                    <svg t="1624074099446" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33046" width="35" height="35"><path d="M262.945641 416.342956l-0.692093 238.969586L54.230376 535.185092l0.692092-238.969586 208.023173 120.12745z" fill="#CCE8FF" p-id="33047"></path><path d="M262.945641 416.342956l64.562325-37.570725-0.692093 239.068456-64.562325 37.471855 0.692093-238.969586z" fill="#005DE5" p-id="33048"></path><path d="M54.922468 296.215506l64.562325-37.471854 208.023173 120.028579-64.562325 37.570725L54.922468 296.215506z" fill="#57ABFF" p-id="33049"></path><path d="M574.881529 278.616588l-1.581925 560.199285L365.276431 718.787294l1.680796-560.199286 207.924302 120.02858z" fill="#FFDF5A" p-id="33050"></path><path d="M574.881529 278.616588l64.562325-37.471855-1.581925 560.199286-64.562325 37.471854 1.581925-560.199285z" fill="#FF7517" p-id="33051"></path><path d="M366.957227 158.588008l64.562325-37.570725 207.924302 120.12745-64.562325 37.471855-207.924302-120.02858z" fill="#FFB845" p-id="33052"></path><path d="M905.207299 157.599305l-2.471758 866.400695-208.023173-120.12745 2.471759-866.301825 208.023172 120.02858z" fill="#76C8FF" p-id="33053"></path><path d="M905.207299 157.599305l64.562325-37.471855-2.372887 866.400695-64.661196 37.471855 2.471758-866.400695z" fill="#005CE2" p-id="33054"></path><path d="M697.184127 37.570725L761.746452 0 969.769624 120.12745l-64.562325 37.471855L697.184127 37.570725z" fill="#2789FF" p-id="33055"></path></svg>
                     <span class="brand-name text-truncate">Canarin Dashboard</span>
                 </a>
             </div>
@@ -356,16 +350,18 @@
                             <i class="mdi mdi-settings mdi-spin"></i>
                         </li>
                         <!-- User Account -->
+
                         <li class="dropdown user-menu">
+                            {% if request.user.is_authenticated %}
                             <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"
                                     aria-expanded="false">
-                                <span class="d-none d-lg-inline-block">Abdus Salam</span>
+                                <span class="d-none d-lg-inline-block">{{ user.username }}</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <!-- User image -->
                                 <li class="dropdown-header">
                                     <div class="d-inline-block">
-                                        Abdus Salam <small class="pt-1">iamabdus@gmail.com</small>
+                                        {{ user.username }} <small class="pt-1">{{ user.email }}</SMALL>
                                     </div>
                                 </li>
 
@@ -379,17 +375,40 @@
                                         <i class="mdi mdi-email"></i> Message
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
-                                </li>
                                 <li class="right-sidebar-in">
-                                    <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
+                                    <a href="#"> <i class="mdi mdi-settings"></i> Setting </a>
                                 </li>
 
                                 <li class="dropdown-footer">
-                                    <a href=""> <i class="mdi mdi-logout"></i> Log Out </a>
+                                    <a href="{% url 'logout' %}"> <i class="mdi mdi-logout"></i> Log Out </a>
                                 </li>
                             </ul>
+                            {% else %}
+                            <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                <span class="d-none d-lg-inline-block">Login</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <!-- User image -->
+                                <li class="dropdown-header">
+                                    <div class="d-inline-block">
+                                        Manage Account <small class="pt-1">You can signup or login here</SMALL>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'login' %}">
+                                        <i class="mdi mdi-account"></i> Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'signup' %}">
+                                        <i class="mdi mdi-account"></i> Signup
+                                    </a>
+                                </li>
+                            </ul>
+
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
