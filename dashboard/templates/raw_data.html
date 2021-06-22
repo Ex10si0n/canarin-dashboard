@@ -96,22 +96,30 @@
 <!--            </li>-->
 <!--        </ul>-->
 <!--    </nav>-->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination border-rounded">
-            {% for page in page_obj.paginator.page_range %}
-                {% if forloop.counter < 6 %}
-                {% if page == page_obj.number %}
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">{{ page }}</a></li>
-                {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
-                {% endif %}
-                {% endif %}
-            {% endfor %}
+<!--        <nav aria-label="Page navigation example">-->
+<!--            <ul class="pagination border-rounded">-->
+<!--            {% for page in page_obj.paginator.page_range %}-->
+<!--                {% if forloop.counter < 6 %}-->
+<!--                {% if page == page_obj.number %}-->
+<!--                    <li class="page-item active" aria-current="page">-->
+<!--                        <a class="page-link" href="#">{{ page }}</a></li>-->
+<!--                {% else %}-->
+<!--                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>-->
+<!--                {% endif %}-->
+<!--                {% endif %}-->
+<!--            {% endfor %}-->
 
-                <input type="text" placeholder="Page">
-            </ul>
-        </nav>
+<!--                <input type="text" placeholder="Page">-->
+<!--            </ul>-->
+<!--        </nav>-->
+        <form action="/raw_data/" method="get">
+        <input
+                class="form-control input-lg"
+                type="text"
+                name="page"
+                placeholder=" Jump Page in {{ page_obj.paginator.page_range }}"
+        />
+        </form>
     </ul>
 </div>
 {% endblock content %}

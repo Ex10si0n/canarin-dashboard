@@ -17,10 +17,55 @@ class HomePageView(TemplateView):
         context['section'] = 'home'
         return context
 
+def simpleDatetime(datetime):
+    # 2020-10-03 09:21:17+00:00
+    date, time = str(datetime).split(' ')
+    y, m, d = date.split('-')
+    time, utc = time.split('+')
+    return "%s-%s %s" % (m, d, time)
+
+
+
+
+def home(request, sample=100):
+    labels = []
+    data = []
+    data1 = []
+    PM1 = []
+    PM10 = []
+    PM2_5 = []
+    airPressure = []
+    queryset = Data.objects.order_by('timestamp')
+    modu = len(queryset) // sample + 1
+    cnt = 0
+    for canarin_data in queryset:
+        if cnt % modu == 0:
+            labels.append(simpleDatetime(canarin_data.datetime))
+            data.append(canarin_data.temperature)
+            data1.append(canarin_data.humidity)
+            PM1.append(canarin_data.pm1)
+            PM10.append(canarin_data.pm10)
+            PM2_5.append(canarin_data.pm2_5)
+            airPressure.append(canarin_data.airpressure)
+        cnt += 1
+
+
+    return render(request, 'index.html', {
+        'labels': labels,
+        'data': data,
+        'data1': data1,
+        'PM1': PM1,
+        'PM10': PM10,
+        'PM2_5': PM2_5,
+        'AP': airPressure,
+        'section': 'home',
+    })
+
+
 class RawDataView(ListView):
     template_name = 'raw_data.html'
     model = Data
-    paginate_by = 50
+    paginate_by = 30
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -40,7 +85,7 @@ def data_upload(request):
     template = "data_upload.html"
     data = Data.objects.all()
     prompt = {
-        'order': 'Order of the CSV should be name, email, address,    phone, profile',
+        'order': 'Order of the CSV should be in the following format',
         'profiles': data
     }
     if request.method == "GET":
