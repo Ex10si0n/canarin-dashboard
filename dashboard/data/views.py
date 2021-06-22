@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import csv
 from .models import Data
-from django.views.generic import CreateView, DetailView, UpdateView, TemplateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView, TemplateView, DetailView, ListView
 import warnings
 warnings.filterwarnings('ignore')
 import csv, io
@@ -11,6 +11,21 @@ from django.contrib import messages
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['section'] = 'home'
+        return context
+
+class RawDataView(ListView):
+    template_name = 'raw_data.html'
+    model = Data
+    paginate_by = 50
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['section'] = 'raw_data'
+        return context
 
 
 def correct_null(str, prv, index):
