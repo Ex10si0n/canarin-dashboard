@@ -115,26 +115,7 @@
         <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-                <a href="#" title="Canarin Dashboard">
-                    <!--
-                  <svg
-                    class="brand-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid"
-                    width="30"
-                    height="33"
-                    viewBox="0 0 30 33"
-                  >
-                    <g fill="none" fill-rule="evenodd">
-                      <path
-                        class="logo-fill-blue"
-                        fill="#7DBCFF"
-                        d="M0 4v25l8 4V0zM22 4v25l8 4V0z"
-                      />
-                      <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-                    </g>
-                  </svg>
-                    -->
+                <a href="{% url 'home' %}" title="Canarin Dashboard">
                     <svg t="1624074099446" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33046" width="35" height="35"><path d="M262.945641 416.342956l-0.692093 238.969586L54.230376 535.185092l0.692092-238.969586 208.023173 120.12745z" fill="#CCE8FF" p-id="33047"></path><path d="M262.945641 416.342956l64.562325-37.570725-0.692093 239.068456-64.562325 37.471855 0.692093-238.969586z" fill="#005DE5" p-id="33048"></path><path d="M54.922468 296.215506l64.562325-37.471854 208.023173 120.028579-64.562325 37.570725L54.922468 296.215506z" fill="#57ABFF" p-id="33049"></path><path d="M574.881529 278.616588l-1.581925 560.199285L365.276431 718.787294l1.680796-560.199286 207.924302 120.02858z" fill="#FFDF5A" p-id="33050"></path><path d="M574.881529 278.616588l64.562325-37.471855-1.581925 560.199286-64.562325 37.471854 1.581925-560.199285z" fill="#FF7517" p-id="33051"></path><path d="M366.957227 158.588008l64.562325-37.570725 207.924302 120.12745-64.562325 37.471855-207.924302-120.02858z" fill="#FFB845" p-id="33052"></path><path d="M905.207299 157.599305l-2.471758 866.400695-208.023173-120.12745 2.471759-866.301825 208.023172 120.02858z" fill="#76C8FF" p-id="33053"></path><path d="M905.207299 157.599305l64.562325-37.471855-2.372887 866.400695-64.661196 37.471855 2.471758-866.400695z" fill="#005CE2" p-id="33054"></path><path d="M697.184127 37.570725L761.746452 0 969.769624 120.12745l-64.562325 37.471855L697.184127 37.570725z" fill="#2789FF" p-id="33055"></path></svg>
                     <span class="brand-name text-truncate">Canarin Dashboard</span>
                 </a>
@@ -153,27 +134,27 @@
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Dashboard</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse" id="dashboard" data-parent="#sidebar-menu" style="">
+                            <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu" style="">
                                 <div class="sub-menu">
 
 
-                                    <li>
-                                        <a class="sidenav-item-link" href="">
-                                            <span class="nav-text">Data</span>
-
-                                        </a>
-                                    </li>
 
 
                                     <li class="active">
-                                        <a class="sidenav-item-link" href="analytics.html">
+                                        <a class="sidenav-item-link" href="{% url 'home' %}">
                                             <span class="nav-text">Analytics</span>
 
-                                            <span class="badge badge-success">new</span>
+                                            <span class="badge badge-success">VISUAL</span>
 
                                         </a>
                                     </li>
 
+                                    <li>
+                                        <a class="sidenav-item-link" href="{% url 'data_upload' %}">
+                                            <span class="nav-text">Data Upload</span>
+
+                                        </a>
+                                    </li>
 
                                 </div>
                             </ul>
@@ -223,27 +204,27 @@
                         </li>
 
 
-                        <li class="has-sub expand">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                               data-target="#components" aria-expanded="true" aria-controls="components">
-                                <i class="mdi mdi-folder-multiple-outline"></i>
-                                <span class="nav-text">Components</span> <b class="caret"></b>
-                            </a>
-                            <ul class="collapse show" id="components" data-parent="#sidebar-menu" style="">
-                                <div class="sub-menu">
+<!--                        <li class="has-sub expand">-->
+<!--                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"-->
+<!--                               data-target="#components" aria-expanded="true" aria-controls="components">-->
+<!--                                <i class="mdi mdi-folder-multiple-outline"></i>-->
+<!--                                <span class="nav-text">Components</span> <b class="caret"></b>-->
+<!--                            </a>-->
+<!--                            <ul class="collapse show" id="components" data-parent="#sidebar-menu" style="">-->
+<!--                                <div class="sub-menu">-->
 
 
-                                    <li>
-                                        <a class="sidenav-item-link" href="alert.html">
-                                            <span class="nav-text">Alert</span>
+<!--                                    <li>-->
+<!--                                        <a class="sidenav-item-link" href="alert.html">-->
+<!--                                            <span class="nav-text">Alert</span>-->
 
-                                        </a>
-                                    </li>
+<!--                                        </a>-->
+<!--                                    </li>-->
 
 
-                                </div>
-                            </ul>
-                        </li>
+<!--                                </div>-->
+<!--                            </ul>-->
+<!--                        </li>-->
 
 
                     </ul>
@@ -503,8 +484,10 @@
         <footer class="footer mt-auto">
             <div class="copyright bg-white">
                 <p>
-                    © <span id="copy-year">2021</span> Copyright Sleek Dashboard Bootstrap Template by
-                    <a class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
+                    © <span id="copy-year">2021</span> Made with ❤️ by
+                    <a class="text-primary" href="https://www.aspires.cc/" target="_blank">Steve Yan</a>
+                    and
+                    <a class="text-primary" href="https://github.com/YajingLiu2357/" target="_blank">Yajing Liu</a>.
                 </p>
             </div>
             <script>

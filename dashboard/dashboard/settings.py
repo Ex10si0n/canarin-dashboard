@@ -127,3 +127,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+DATE_FORMAT = 'd/m/Y'
+DATETIME_FORMAT = 'd/m/Y H:i'
