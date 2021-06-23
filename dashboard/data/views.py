@@ -30,7 +30,8 @@ def simpleDatetime(datetime):
 
 
 def home(request, node):
-    perc: 0.54
+
+    perc = 0.54
     try:
         import subprocess
         import re
@@ -63,7 +64,24 @@ def home(request, node):
 
         perc = 1 - ((vmStats["Pages free"] / 1024 / 1024) / (rssTotal / 1024 / 1024))
     except:
-        pass
+        try:
+            f = open('/proc/meminfo')
+            all = f.readline()
+            f.readline()
+            free = f.readline()
+
+            _, all = all.split(':')
+            all = all.strip()
+            all, _ = all.split(' ')
+
+            _, free = free.split(':')
+            free = free.strip()
+            free, _ = free.split(' ')
+
+            perc = float(free)/float(all)
+        except:
+            pass
+
 
     sample = 100
     labels = []

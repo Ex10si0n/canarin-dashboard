@@ -25,7 +25,7 @@ SECRET_KEY = 'h#hk(o_01-$+pt-3(5_b*cleo!d!nxb5-g5ni3l60w-37n=jd('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['canarindashboard.pythonanywhere.com']
 
 
 # Application definition
