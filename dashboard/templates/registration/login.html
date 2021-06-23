@@ -3,6 +3,7 @@
 <head>
   <head>
     {% load static %}
+    {% load crispy_forms_tags %}
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,12 +64,12 @@
             <div class="card-body p-5">
 
               <h4 class="text-dark mb-5">Log In</h4>
-              <form method="post">{% csrf_token %}
                   <form method="post">{% csrf_token %}
-                  {{ form.as_p }}
+                  {{ form | crispy }}
                   <input type="hidden" name="next" value="{{ next }}">
                   <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
               </form>
+              <br>
               <p><a href="{% url 'signup' %}">Sign Up </a>Here.</p>
 <!--                <div class="row">-->
 <!--                  <div class="form-group col-md-12 mb-4">-->
