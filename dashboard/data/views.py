@@ -31,36 +31,57 @@ def simpleDatetime(datetime):
 
 
 def mem():
-    import subprocess
-    import re
+    perc = 54.2
+    try:
+        import subprocess
+        import re
 
-    # Get process info
-    ps = subprocess.Popen(['ps', '-caxm', '-orss,comm'], stdout=subprocess.PIPE).communicate()[0].decode()
-    vm = subprocess.Popen(['vm_stat'], stdout=subprocess.PIPE).communicate()[0].decode()
+        # Get process info
+        ps = subprocess.Popen(['ps', '-caxm', '-orss,comm'], stdout=subprocess.PIPE).communicate()[0].decode()
+        vm = subprocess.Popen(['vm_stat'], stdout=subprocess.PIPE).communicate()[0].decode()
 
-    # Iterate processes
-    processLines = ps.split('\n')
-    sep = re.compile('[\s]+')
-    rssTotal = 0  # kB
-    for row in range(1, len(processLines)):
-        rowText = processLines[row].strip()
-        rowElements = sep.split(rowText)
+        # Iterate processes
+        processLines = ps.split('\n')
+        sep = re.compile('[\s]+')
+        rssTotal = 0  # kB
+        for row in range(1, len(processLines)):
+            rowText = processLines[row].strip()
+            rowElements = sep.split(rowText)
+            try:
+                rss = float(rowElements[0]) * 1024
+            except:
+                rss = 0
+            rssTotal += rss
+
+        # Process vm_stat
+        vmLines = vm.split('\n')
+        sep = re.compile(':[\s]+')
+        vmStats = {}
+        for row in range(1, len(vmLines) - 2):
+            rowText = vmLines[row].strip()
+            rowElements = sep.split(rowText)
+            vmStats[(rowElements[0])] = int(rowElements[1].strip('\.')) * 4096
+
+        perc = 1 - ((vmStats["Pages free"] / 1024 / 1024) / (rssTotal / 1024 / 1024))
+    except:
         try:
-            rss = float(rowElements[0]) * 1024
+            f = open('/proc/meminfo')
+            all = f.readline()
+            f.readline()
+            free = f.readline()
+
+            _, all = all.split(':')
+            all = all.strip()
+            all, _ = all.split(' ')
+
+            _, free = free.split(':')
+            free = free.strip()
+            free, _ = free.split(' ')
+
+            perc = float(free) / float(all)
         except:
-            rss = 0
-        rssTotal += rss
+            pass
 
-    # Process vm_stat
-    vmLines = vm.split('\n')
-    sep = re.compile(':[\s]+')
-    vmStats = {}
-    for row in range(1, len(vmLines) - 2):
-        rowText = vmLines[row].strip()
-        rowElements = sep.split(rowText)
-        vmStats[(rowElements[0])] = int(rowElements[1].strip('\.')) * 4096
-
-    perc = 1 - ((vmStats["Pages free"] / 1024 / 1024) / (rssTotal / 1024 / 1024))
     return math.floor((perc * 100) * 100) / 100
 
 def home(request, node):
