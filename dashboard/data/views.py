@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import math
 from django.http import Http404
 import csv
 from .models import Data
@@ -29,6 +30,40 @@ def simpleDatetime(datetime):
 
 
 def home(request, node):
+    perc: 0.54
+    try:
+        import subprocess
+        import re
+
+        # Get process info
+        ps = subprocess.Popen(['ps', '-caxm', '-orss,comm'], stdout=subprocess.PIPE).communicate()[0].decode()
+        vm = subprocess.Popen(['vm_stat'], stdout=subprocess.PIPE).communicate()[0].decode()
+
+        # Iterate processes
+        processLines = ps.split('\n')
+        sep = re.compile('[\s]+')
+        rssTotal = 0  # kB
+        for row in range(1, len(processLines)):
+            rowText = processLines[row].strip()
+            rowElements = sep.split(rowText)
+            try:
+                rss = float(rowElements[0]) * 1024
+            except:
+                rss = 0
+            rssTotal += rss
+
+        # Process vm_stat
+        vmLines = vm.split('\n')
+        sep = re.compile(':[\s]+')
+        vmStats = {}
+        for row in range(1, len(vmLines) - 2):
+            rowText = vmLines[row].strip()
+            rowElements = sep.split(rowText)
+            vmStats[(rowElements[0])] = int(rowElements[1].strip('\.')) * 4096
+
+        perc = 1 - ((vmStats["Pages free"] / 1024 / 1024) / (rssTotal / 1024 / 1024))
+    except:
+        pass
 
     sample = 100
     labels = []
@@ -71,7 +106,8 @@ def home(request, node):
         'section': 'home',
         'GPS_lng': gps_lng,
         'GPS_alt': gps_alt,
-        'GPS_lat': gps_lat
+        'GPS_lat': gps_lat,
+        'perc': math.floor((perc * 100) * 100) / 100
     })
 
 
@@ -79,6 +115,9 @@ class RawDataView(ListView):
     template_name = 'raw_data.html'
     model = Data
     paginate_by = 30
+
+    def get_queryset(self):
+        return Data.objects.order_by('-timestamp')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -128,4 +167,4 @@ def data_upload(request):
             humidity = correct_null(column[11], prv, 11)
         )
 
-    return render(request, template, {'section': 'data_upload'})
+    return render(request, template, {'section': 'data_upload', 'success': 'Upload Success!'})
