@@ -15,6 +15,15 @@ Sensors (already installed): Canarin II sensor
 Map of the Cesena Campus (SVG based)
 Application form: web app(responsive for mobile)
 
+### Screenshots
+
+![](assets/dashboard1.png)
+![](assets/dashboard2.png)
+![](assets/dashboard3.png)
+![](assets/dashboard4.png)
+![](assets/dashboard5.png)
+![](assets/dashboard6.png)
+
 ## Issues
 
 1. only one sensor
