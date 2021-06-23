@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 import csv
 from .models import Data
 from django.views.generic import CreateView, DetailView, UpdateView, TemplateView, DetailView, ListView
@@ -27,7 +28,9 @@ def simpleDatetime(datetime):
 
 
 
-def home(request, sample=100):
+def home(request, node):
+
+    sample = 100
     labels = []
     data = []
     data1 = []
@@ -35,7 +38,10 @@ def home(request, sample=100):
     PM10 = []
     PM2_5 = []
     airPressure = []
-    queryset = Data.objects.order_by('timestamp')
+    gps_lat = 0
+    gps_alt = 0
+    gps_lng = 0
+    queryset = Data.objects.order_by('timestamp').filter(node=node)
     modu = len(queryset) // sample + 1
     cnt = 0
     for canarin_data in queryset:
@@ -47,6 +53,9 @@ def home(request, sample=100):
             PM10.append(canarin_data.pm10)
             PM2_5.append(canarin_data.pm2_5)
             airPressure.append(canarin_data.airpressure)
+            gps_lat = canarin_data.gps_lat
+            gps_alt = canarin_data.gps_alt
+            gps_lng = canarin_data.gps_lng
         cnt += 1
 
 
@@ -58,7 +67,11 @@ def home(request, sample=100):
         'PM10': PM10,
         'PM2_5': PM2_5,
         'AP': airPressure,
+        'node': node,
         'section': 'home',
+        'GPS_lng': gps_lng,
+        'GPS_alt': gps_alt,
+        'GPS_lat': gps_lat
     })
 
 
@@ -86,7 +99,7 @@ def data_upload(request):
     data = Data.objects.all()
     prompt = {
         'order': 'Order of the CSV should be in the following format',
-        'profiles': data
+        'profiles': data,
     }
     if request.method == "GET":
         return render(request, template, prompt)
@@ -114,5 +127,5 @@ def data_upload(request):
             temperature = correct_null(column[10], prv, 10),
             humidity = correct_null(column[11], prv, 11)
         )
-    context = {}
-    return render(request, template, context)
+
+    return render(request, template, {'section': 'data_upload'})

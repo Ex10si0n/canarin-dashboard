@@ -5,6 +5,59 @@
     <div class="content">
         <!-- Temperature and PMs Row -->
         <div class="row">
+            <div class="col-xl-4">
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h2>Sensor</h2>
+                    </div>
+                    <script>
+                        function nav() {
+                            var w = document.myform.myselect.selectedIndex;
+                            var url_add = document.myform.myselect.options[w].value;
+                            window.location.href = url_add;
+                        }
+                    </script>
+                    <div class="card-body">
+                        <form name="myform" method="get">
+                            <select name="myselect" class="form-control" id="onlyselect" onchange="nav();">
+                                <option value>{{ node }} - Current </option>
+                                <option value="/node/num0/">num0 - F1</option>
+                                <option value="/node/num1/">num1 - F2</option>
+                                <option value="/node/num2/">num2 - F2</option>
+                                <option value="/node/num3/">num3 - G</option>
+                            </select>
+                        </form>
+                        <br>
+
+                        Current Node: {{ node }}
+                        {% if node == 'num0' %}
+                        <img id="F1" src="{% static 'img/F1.svg' %}">
+                        {% endif %}
+                        {% if node == 'num1' %}
+                        <img id="F2" src="{% static 'img/F2.svg' %}">
+                        {% endif %}
+                        {% if node == 'num2' %}
+                        <img id="F2-2" src="{% static 'img/F2-1.svg' %}">
+                        {% endif %}
+                        {% if node == 'num3' %}
+                        <img id="FG" src="{% static 'img/FG.svg' %}">
+                        {% endif %}
+                        <!--                        <img src="{% static 'img/B.svg' %}">-->
+                        <hr>
+                        <br style="margin: 0">
+                        <div style="padding: 0; margin: 0" class="card-header">
+                            <h2 style="padding: 0; margin: 0;">Node {{ node }}'s GPS Info</h2>
+                        </div>
+                        <br>
+                        GPS - Longtitute: {{ GPS_lng }}
+                        <br>
+                        GPS - Latitute: {{ GPS_lat }}
+                        <br>
+                        GPS - Altitute: {{ GPS_alt }}
+
+                    </div>
+                </div>
+            </div>
             <div class="col-xl-8">
                 <div class="card card-default">
                     <div class="card-header">
@@ -38,20 +91,6 @@
                             }
                             });
                         </script>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card card-default">
-                    <div class="card-header">
-                        <h2>Sensor</h2>
-                    </div>
-                    <div class="card-body">
-                        <img src="{% static 'img/F1.svg' %}">
-                        <img src="{% static 'img/F2.svg' %}">
-<!--                        <img src="{% static 'img/FG.svg' %}">-->
-<!--                        <img src="{% static 'img/B.svg' %}">-->
-
                     </div>
                 </div>
             </div>

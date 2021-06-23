@@ -22,7 +22,7 @@
 	<rect x="752.6" y="267.8" width="1.7" height="21.1"/>
 	<rect x="756" y="267.8" width="1.7" height="21.1"/>
 </g>
-<polygon class="st2" points="390.7,150.4 308.8,150.4 308.8,230.8 379.8,230.8 379.8,226.6 390.7,226.6 "/>
+<polygon style="fill: tomato" class="st2" points="390.7,150.4 308.8,150.4 308.8,230.8 379.8,230.8 379.8,226.6 390.7,226.6 "/>
 <rect x="394.4" y="192.6" class="st2" width="53" height="27.2"/>
 <rect x="449.7" y="192.6" class="st2" width="25.8" height="27.2"/>
 <rect x="477.7" y="192.6" class="st2" width="39.1" height="27.2"/>
@@ -192,7 +192,7 @@
 <rect x="351.4" y="562.8" class="st2" width="26.6" height="18.3"/>
 <rect x="351.4" y="582.8" class="st2" width="26.6" height="14.4"/>
 <rect x="351.4" y="598.8" class="st2" width="26.6" height="18.3"/>
-<rect style="fill:tomato" xmlns="http://www.w3.org/2000/svg" x="351.4" y="618.8" class="st2" width="26.6" height="21.2"/>
+<rect xmlns="http://www.w3.org/2000/svg" x="351.4" y="618.8" class="st2" width="26.6" height="21.2"/>
 <rect x="787.3" y="370" class="st4" width="12.4" height="11.1"/>
 <g id="Livello_2_1_">
 	<g id="Livello_2-2">

@@ -117,7 +117,7 @@
         <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-                <a href="{% url 'home' %}" title="Canarin Dashboard">
+                <a href="{% url 'home' 'num0' %}" title="Canarin Dashboard">
                     <svg t="1624074099446" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33046" width="35" height="35"><path d="M262.945641 416.342956l-0.692093 238.969586L54.230376 535.185092l0.692092-238.969586 208.023173 120.12745z" fill="#CCE8FF" p-id="33047"></path><path d="M262.945641 416.342956l64.562325-37.570725-0.692093 239.068456-64.562325 37.471855 0.692093-238.969586z" fill="#005DE5" p-id="33048"></path><path d="M54.922468 296.215506l64.562325-37.471854 208.023173 120.028579-64.562325 37.570725L54.922468 296.215506z" fill="#57ABFF" p-id="33049"></path><path d="M574.881529 278.616588l-1.581925 560.199285L365.276431 718.787294l1.680796-560.199286 207.924302 120.02858z" fill="#FFDF5A" p-id="33050"></path><path d="M574.881529 278.616588l64.562325-37.471855-1.581925 560.199286-64.562325 37.471854 1.581925-560.199285z" fill="#FF7517" p-id="33051"></path><path d="M366.957227 158.588008l64.562325-37.570725 207.924302 120.12745-64.562325 37.471855-207.924302-120.02858z" fill="#FFB845" p-id="33052"></path><path d="M905.207299 157.599305l-2.471758 866.400695-208.023173-120.12745 2.471759-866.301825 208.023172 120.02858z" fill="#76C8FF" p-id="33053"></path><path d="M905.207299 157.599305l64.562325-37.471855-2.372887 866.400695-64.661196 37.471855 2.471758-866.400695z" fill="#005CE2" p-id="33054"></path><path d="M697.184127 37.570725L761.746452 0 969.769624 120.12745l-64.562325 37.471855L697.184127 37.570725z" fill="#2789FF" p-id="33055"></path></svg>
                     <span class="brand-name text-truncate">Canarin Dashboard</span>
                 </a>
@@ -150,7 +150,7 @@
                                             class=""
                                         {% endif %}
                                     >
-                                        <a class="sidenav-item-link" href="{% url 'home' %}">
+                                        <a class="sidenav-item-link" href="{% url 'home' 'num0' %}">
                                             <span class="nav-text">Analytics</span>
                                             <span class="badge badge-success">VISUAL</span>
 
@@ -172,7 +172,7 @@
 
                                     {% if perms.data.add_data %}
                                     <li
-                                            {% if section == "data_upload" %}
+                                    {% if section == "data_upload" %}
                                     class="active"
                                     {% else %}
                                     class=""
