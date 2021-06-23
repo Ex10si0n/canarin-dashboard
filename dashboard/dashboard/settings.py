@@ -25,7 +25,7 @@ SECRET_KEY = 'h#hk(o_01-$+pt-3(5_b*cleo!d!nxb5-g5ni3l60w-37n=jd('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['canarindashboard.pythonanywhere.com']
+ALLOWED_HOSTS = ['canarindashboard.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -124,8 +124,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'homepage'
+LOGOUT_REDIRECT_URL = 'homepage'
 LOGIN_URL = 'login'
 
 DATE_FORMAT = 'd/m/Y'
