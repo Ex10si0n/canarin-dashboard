@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1190.6 841.9" style="enable-background:new 0 0 1190.6 841.9;" xml:space="preserve">
+<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1190.6 841.9" style="enable-background:new 0 0 1190.6 841.9;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;stroke:#000000;stroke-width:0.48;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 	.st1{fill:#A7A9AB;}
@@ -11,9 +8,7 @@
 	.st5{fill:#33CC33;}
 </style>
 <path class="st0" d="M410.8,258.5v10.4"/>
-<polygon class="st1" points="862.7,147.8 774.5,147.8 774.7,160.4 392.5,160.4 392.5,150.4 262.9,150.4 262.9,331 394.2,331
-	394.2,312.3 457,312.3 457,292.5 725.3,292.5 725.3,292.2 755,292.2 755,307.3 732,307.3 732,537.8 651,537.8 651,498.1
-	305.6,498.1 305.6,679.3 818.9,680.4 818.9,625.7 862.7,625.7 "/>
+<polygon class="st1" points="862.7,147.8 774.5,147.8 774.7,160.4 392.5,160.4 392.5,150.4 262.9,150.4 262.9,331 394.2,331  394.2,312.3 457,312.3 457,292.5 725.3,292.5 725.3,292.2 755,292.2 755,307.3 732,307.3 732,537.8 651,537.8 651,498.1  305.6,498.1 305.6,679.3 818.9,680.4 818.9,625.7 862.7,625.7 "/>
 <g>
 	<rect x="732.2" y="267.8" width="1.7" height="21.1"/>
 	<rect x="728.8" y="267.8" width="1.7" height="21.1"/>
@@ -27,7 +22,7 @@
 	<rect x="752.6" y="267.8" width="1.7" height="21.1"/>
 	<rect x="756" y="267.8" width="1.7" height="21.1"/>
 </g>
-<polygon class="st2" points="390.7,150.4 308.8,150.4 308.8,230.8 379.8,230.8 379.8,226.6 390.7,226.6 "/>
+<polygon style="fill: tomato" class="st2" points="390.7,150.4 308.8,150.4 308.8,230.8 379.8,230.8 379.8,226.6 390.7,226.6 "/>
 <rect x="394.4" y="192.6" class="st2" width="53" height="27.2"/>
 <rect x="449.7" y="192.6" class="st2" width="25.8" height="27.2"/>
 <rect x="477.7" y="192.6" class="st2" width="39.1" height="27.2"/>
@@ -197,14 +192,13 @@
 <rect x="351.4" y="562.8" class="st2" width="26.6" height="18.3"/>
 <rect x="351.4" y="582.8" class="st2" width="26.6" height="14.4"/>
 <rect x="351.4" y="598.8" class="st2" width="26.6" height="18.3"/>
-<rect x="351.4" y="618.8" class="st2" width="26.6" height="21.2"/>
+<rect style="fill:tomato" xmlns="http://www.w3.org/2000/svg" x="351.4" y="618.8" class="st2" width="26.6" height="21.2"/>
 <rect x="787.3" y="370" class="st4" width="12.4" height="11.1"/>
 <g id="Livello_2_1_">
 	<g id="Livello_2-2">
-		<polygon class="st5" points="309.5,288 309.5,150.5 263.5,150.5 263.5,331.1 303.5,331.1 309.5,331.1 349.4,331.1 349.4,288 		"/>
+		<polygon class="st5" points="309.5,288 309.5,150.5 263.5,150.5 263.5,331.1 303.5,331.1 309.5,331.1 349.4,331.1 349.4,288   "/>
 		<rect x="393.1" y="160.6" class="st5" width="382.2" height="32.2"/>
-		<polygon class="st5" points="863.3,538.8 762,538.8 762,592.1 762,625.8 762,637.9 434.7,637.9 434.7,680.5 762,680.5
-			794.4,680.5 819.5,680.5 819.5,625.8 863.3,625.8 		"/>
+		<polygon class="st5" points="863.3,538.8 762,538.8 762,592.1 762,625.8 762,637.9 434.7,637.9 434.7,680.5 762,680.5    794.4,680.5 819.5,680.5 819.5,625.8 863.3,625.8   "/>
 		<rect x="477.5" y="498.3" class="st5" width="174.1" height="44.3"/>
 		<rect x="306.2" y="528" class="st5" width="45.8" height="123.5"/>
 	</g>
