@@ -28,23 +28,52 @@
                             </select>
                         </form>
                         <br>
+                        <button id="showbtn" type="button" class="mb-1 btn btn-sm btn-outline-primary" onclick="document.getElementById('timeselect').style.display='block'; document.getElementById('showbtn').style.display='none'">Show Date Filter</button>
+                        <div style="display: none" id="timeselect">
+                        <input type="date" id="start" name="trip-start"
+                           min="2000-01-01" max="2099-12-31">&nbsp;~
+                        <input type="date" id="end" name="trip-end"
+                               min="2000-01-01" max="2099-12-31">
+                            <br>
+                            <br>
+                            <input type="text" id="jsnode" value="{{ node }}" style="display: none">
+                            <button type="button" class="mb-1 btn btn-sm btn-outline-primary" onclick="timeselect()">Apply</button>
+                            <script>
+                                function timeselect() {
+                                    var startDate = document.getElementById('start').value;
+                                    var endDate = document.getElementById('end').value;
+                                    var node = document.getElementById('jsnode').value;
+                                    window.location.href = '/node/' + node + '/' + startDate + '/' + endDate
+
+                                }
+                            </script>
+                        </div>
+
 
                         Current Node: {{ node }}
+                        <br>
                         {% if node == 'num0' %}
-                        <img id="F1" src="{% static 'img/F1.svg' %}">
+                        <a href="{% url 'map' %}">
+                            <img id="F1" src="{% static 'img/F1.svg' %}">
+                        </a>
                         {% endif %}
                         {% if node == 'num1' %}
-                        <img id="F2" src="{% static 'img/F2.svg' %}">
+                        <a href="{% url 'map' %}">
+                            <img id="F2" src="{% static 'img/F2.svg' %}">
+                        </a>
                         {% endif %}
                         {% if node == 'num2' %}
-                        <img id="F2-2" src="{% static 'img/F2-1.svg' %}">
+                        <a href="{% url 'map' %}">
+                            <img id="F2-2" src="{% static 'img/F2-1.svg' %}">
+                        </a>
                         {% endif %}
                         {% if node == 'num3' %}
-                        <img id="FG" src="{% static 'img/FG.svg' %}">
+                        <a href="{% url 'map' %}">
+                            <img id="FG" src="{% static 'img/FG.svg' %}">
+                        </a>
                         {% endif %}
+                        <font size="2" color="#ff6347">* select nodes or click map to change node</font>
                         <!--                        <img src="{% static 'img/B.svg' %}">-->
-                        <hr>
-                        <br style="margin: 0">
                         <div style="padding: 0; margin: 0" class="card-header">
                             <h2 style="padding: 0; margin: 0;">Node {{ node }}'s GPS Info</h2>
                         </div>

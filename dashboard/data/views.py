@@ -21,6 +21,16 @@ class HomePageView(TemplateView):
         context['perc'] = perc
         return context
 
+class MapView(TemplateView):
+    template_name = 'map.html'
+
+    def get_context_data(self, **kwargs):
+        perc = mem()
+        context = super().get_context_data(**kwargs)
+        context['section'] = 'Map'
+        context['perc'] = perc
+        return context
+
 def simpleDatetime(datetime):
     # 2020-10-03 09:21:17+00:00
     date, time = str(datetime).split(' ')
@@ -85,10 +95,7 @@ def mem():
     return math.floor((perc * 100) * 100) / 100
 
 def home(request, node):
-
     perc = mem()
-
-
     sample = 100
     labels = []
     data = []
@@ -118,6 +125,7 @@ def home(request, node):
         cnt += 1
 
 
+
     return render(request, 'index.html', {
         'labels': labels,
         'data': data,
@@ -135,6 +143,53 @@ def home(request, node):
     })
 
 
+def hometime(request, node, start, end):
+    perc = mem()
+    sample = 100
+    labels = []
+    data = []
+    data1 = []
+    PM1 = []
+    PM10 = []
+    PM2_5 = []
+    airPressure = []
+    gps_lat = 0
+    gps_alt = 0
+    gps_lng = 0
+    queryset = Data.objects.order_by('timestamp').filter(node=node, datetime__range=[start, end])
+    modu = len(queryset) // sample + 1
+    cnt = 0
+    for canarin_data in queryset:
+        if cnt % modu == 0:
+            labels.append(simpleDatetime(canarin_data.datetime))
+            data.append(canarin_data.temperature)
+            data1.append(canarin_data.humidity)
+            PM1.append(canarin_data.pm1)
+            PM10.append(canarin_data.pm10)
+            PM2_5.append(canarin_data.pm2_5)
+            airPressure.append(canarin_data.airpressure)
+            gps_lat = canarin_data.gps_lat
+            gps_alt = canarin_data.gps_alt
+            gps_lng = canarin_data.gps_lng
+        cnt += 1
+
+
+
+    return render(request, 'index.html', {
+        'labels': labels,
+        'data': data,
+        'data1': data1,
+        'PM1': PM1,
+        'PM10': PM10,
+        'PM2_5': PM2_5,
+        'AP': airPressure,
+        'node': node,
+        'section': 'home',
+        'GPS_lng': gps_lng,
+        'GPS_alt': gps_alt,
+        'GPS_lat': gps_lat,
+        'perc': perc
+    })
 class RawDataView(ListView):
     template_name = 'raw_data.html'
     model = Data
