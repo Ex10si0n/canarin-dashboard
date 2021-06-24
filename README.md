@@ -1,6 +1,10 @@
 ## Title: Canarin II Dashboard
 #### Areas: Sensors, data visualization, HCI
 
+### Project Website
+
+[https://canarindashboard.pythonanywhere.com](https://canarindashboard.pythonanywhere.com)
+
 ### Developer
 
 Yajing Liu, Zhongbo Yan.
@@ -23,8 +27,3 @@ Application form: web app(responsive for mobile)
 ![](assets/dashboard4.png)
 ![](assets/dashboard5.png)
 ![](assets/dashboard6.png)
-
-## Issues
-
-1. only one sensor
-2. should we use the campus map
