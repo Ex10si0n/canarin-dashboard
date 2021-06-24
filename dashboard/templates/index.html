@@ -20,11 +20,10 @@
                     <div class="card-body">
                         <form name="myform" method="get">
                             <select name="myselect" class="form-control" id="onlyselect" onchange="nav();">
-                                <option value>{{ node }} - Current </option>
-                                <option value="/node/num0/">num0 - F1</option>
-                                <option value="/node/num1/">num1 - F2</option>
-                                <option value="/node/num2/">num2 - F2</option>
-                                <option value="/node/num3/">num3 - G</option>
+                                <option value="/node/num0/" {% if node == "num0" %} selected {% endif %}> num0 - F1</option>
+                                <option value="/node/num1/" {% if node == "num1" %} selected {% endif %}>num1 - F2</option>
+                                <option value="/node/num2/" {% if node == "num2" %} selected {% endif %}>num2 - F2</option>
+                                <option value="/node/num3/" {% if node == "num3" %} selected {% endif %}>num3 - G</option>
                             </select>
                         </form>
                         <br>
