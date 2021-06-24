@@ -124,6 +124,12 @@ def home(request, node):
             gps_lng = canarin_data.gps_lng
         cnt += 1
 
+    hasdata = ''
+
+    if len(queryset) == 0:
+        hasdata = 'No data found.'
+    else:
+        hasdata = ''
 
 
     return render(request, 'index.html', {
@@ -139,7 +145,8 @@ def home(request, node):
         'GPS_lng': gps_lng,
         'GPS_alt': gps_alt,
         'GPS_lat': gps_lat,
-        'perc': perc
+        'perc': perc,
+        'hasdata': hasdata
     })
 
 
@@ -157,6 +164,7 @@ def hometime(request, node, start, end):
     gps_alt = 0
     gps_lng = 0
     queryset = Data.objects.order_by('timestamp').filter(node=node, datetime__range=[start, end])
+
     modu = len(queryset) // sample + 1
     cnt = 0
     for canarin_data in queryset:
@@ -171,9 +179,14 @@ def hometime(request, node, start, end):
             gps_lat = canarin_data.gps_lat
             gps_alt = canarin_data.gps_alt
             gps_lng = canarin_data.gps_lng
-        cnt += 1
+            cnt += 1
 
+    hasdata = ''
 
+    if len(queryset) == 0:
+        hasdata = 'No data found.'
+    else:
+        hasdata = ''
 
     return render(request, 'index.html', {
         'labels': labels,
@@ -188,8 +201,10 @@ def hometime(request, node, start, end):
         'GPS_lng': gps_lng,
         'GPS_alt': gps_alt,
         'GPS_lat': gps_lat,
-        'perc': perc
+        'perc': perc,
+        'hasdata': hasdata
     })
+
 class RawDataView(ListView):
     template_name = 'raw_data.html'
     model = Data

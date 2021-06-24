@@ -89,7 +89,7 @@
             <div class="col-xl-8">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h2>Air Pressure</h2>
+                        <h2>Air Pressure <i style="color: red"> {{ hasdata }}</i> </h2>
                     </div>
                     <div class="card-body">
                         <canvas id="AP" width="400" height="300"></canvas>
@@ -125,7 +125,7 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-header d-flex flex-wrap justify-content-between">
-                        <h2>Temperature Ext.</h2>
+                        <h2>Temperature Ext.  <i style="color: red"> {{ hasdata }}</i></h2>
                         <div class="date-range-report ">
                             <span></span>
                         </div>
@@ -159,7 +159,7 @@
                         </script>
                     </div>
                         <div class="card-header d-flex flex-wrap justify-content-between">
-                            <h2>Humidity Ext.</h2>
+                            <h2>Humidity Ext. <i style="color: red"> {{ hasdata }}</i></h2>
                             <div class="date-range-report ">
                                 <span></span>
                             </div>
@@ -198,7 +198,7 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h2>Current PMs</h2>
+                        <h2>Current PMs  <i style="color: red"> {{ hasdata }}</i></h2>
                     </div>
                     <div class="card-body">
                         <canvas id="PMs" width="400" height="200"></canvas>
