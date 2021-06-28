@@ -124,6 +124,7 @@ def home(request, node):
             gps_lng = canarin_data.gps_lng
         cnt += 1
 
+
     hasdata = ''
 
     if len(queryset) == 0:
@@ -152,7 +153,7 @@ def home(request, node):
 
 def hometime(request, node, start, end):
     perc = mem()
-    sample = 100
+    sample = 10
     labels = []
     data = []
     data1 = []
@@ -179,7 +180,7 @@ def hometime(request, node, start, end):
             gps_lat = canarin_data.gps_lat
             gps_alt = canarin_data.gps_alt
             gps_lng = canarin_data.gps_lng
-            cnt += 1
+        cnt += 1
 
     hasdata = ''
 
